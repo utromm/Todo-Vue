@@ -7,7 +7,7 @@ const Description = ref('')
 
 function createTask() {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [] ;
-  tasks.push({title: newTask.value, newDate: newDate.value , Description: Description.value , done: false })
+  tasks.push({title: newTask.value, Date: newDate.value , Description: Description.value , done: false })
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 </script>
