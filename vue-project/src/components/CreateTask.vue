@@ -1,6 +1,8 @@
 <script setup >
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
 
+const router = useRouter('');
 const newTask = ref('')
 const newDate = ref('')
 const Description = ref('')
@@ -9,6 +11,7 @@ function createTask() {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [] ;
   tasks.push({title: newTask.value, Date: newDate.value , Description: Description.value , done: false })
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  router.push('/')
 }
 </script>
 

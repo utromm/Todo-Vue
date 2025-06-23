@@ -34,8 +34,8 @@ function updateStorage() {
     >
       {{task.title}} | {{task.Date}} | {{task.Description}}
       <div class="action">
-        <button @click="toggleDone">DONE</button>
-        <button @click="deleteTask">DELETE</button>
+        <button @click="toggleDone(task)" >DONE</button>
+        <button @click="deleteTask(index)">DELETE</button>
       </div>
     </li>
   </ul>
