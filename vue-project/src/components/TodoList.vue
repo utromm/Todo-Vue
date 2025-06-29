@@ -1,5 +1,20 @@
 <script setup>
 import { ref, onMounted} from 'vue'
+import ModalComponent from "../components/ModalComponent.vue";
+
+const isModalOpened = ref(false);
+const editIndex = ref(null);
+
+function openModal(index) {
+  editIndex.value = index;
+  isModalOpened.value = true;
+  console.log(index);
+}
+function closeModal() {
+  isModalOpened.value = false;
+  const loadTasks = localStorage.getItem('tasks');
+  tasks.value = loadTasks ? JSON.parse(loadTasks) : [];
+}
 
 const tasks = ref([])
 
@@ -35,12 +50,18 @@ function updateStorage() {
       {{task.title}} | {{task.Date}} | {{task.Description}}
       <div class="action">
         <button @click="toggleDone(task)" >DONE</button>
-        <button @click="deleteTask(indexضضض)">DELETE</button>
+        <button @click="openModal(index)">EDIT</button>
+        <button @click="deleteTask(index)">DELETE</button>
       </div>
     </li>
   </ul>
   <router-link to="/create">Go To Create Task</router-link>
 </div>
+  <ModalComponent
+      :isOpen="isModalOpened"
+      :editIndex="editIndex"
+      @modal-close="closeModal"
+  />
 </template>
 
 <style scoped>

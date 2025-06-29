@@ -85,7 +85,7 @@ textarea {
 
 button {
   margin-top: 24px;
-  width: 100%;
+  width: 521px;
   padding: 12px;
   background-color: #007bff;
   border: none;
